@@ -1,9 +1,4 @@
-// Copyright (c) 2024 CG Shared Services, LLC
-// File: LCH.Web.Identity.ParameterDescription.cs
-// ---------------------------------------------------------------------------------------------------
-// Modifications:
-// Date:                                       Name:                                  Description:
-
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace LCH.Web.Identity.Areas.HelpPage.ModelDescriptions
@@ -12,7 +7,7 @@ namespace LCH.Web.Identity.Areas.HelpPage.ModelDescriptions
     {
         public ParameterDescription()
         {
-            this.Annotations = new Collection<ParameterAnnotation>();
+            Annotations = new Collection<ParameterAnnotation>();
         }
 
         public Collection<ParameterAnnotation> Annotations { get; private set; }

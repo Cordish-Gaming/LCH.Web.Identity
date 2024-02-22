@@ -1,12 +1,6 @@
-// Copyright (c) 2024 CG Shared Services, LLC
-// File: LCH.Web.Identity.ImageSample.cs
-// ---------------------------------------------------------------------------------------------------
-// Modifications:
-// Date:                                       Name:                                  Description:
-
 using System;
 
-namespace LCH.Web.Identity.Areas.HelpPage.SampleGeneration
+namespace LCH.Web.Identity.Areas.HelpPage
 {
     /// <summary>
     /// This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
@@ -23,26 +17,25 @@ namespace LCH.Web.Identity.Areas.HelpPage.SampleGeneration
             {
                 throw new ArgumentNullException("src");
             }
-
-            this.Src = src;
+            Src = src;
         }
 
-        public string Src { get; }
+        public string Src { get; private set; }
 
         public override bool Equals(object obj)
         {
             ImageSample other = obj as ImageSample;
-            return other != null && this.Src == other.Src;
+            return other != null && Src == other.Src;
         }
 
         public override int GetHashCode()
         {
-            return this.Src.GetHashCode();
+            return Src.GetHashCode();
         }
 
         public override string ToString()
         {
-            return this.Src;
+            return Src;
         }
     }
 }

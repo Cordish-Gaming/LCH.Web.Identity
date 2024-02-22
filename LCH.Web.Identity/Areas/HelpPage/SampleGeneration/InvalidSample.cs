@@ -1,12 +1,6 @@
-// Copyright (c) 2024 CG Shared Services, LLC
-// File: LCH.Web.Identity.InvalidSample.cs
-// ---------------------------------------------------------------------------------------------------
-// Modifications:
-// Date:                                       Name:                                  Description:
-
 using System;
 
-namespace LCH.Web.Identity.Areas.HelpPage.SampleGeneration
+namespace LCH.Web.Identity.Areas.HelpPage
 {
     /// <summary>
     /// This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
@@ -19,26 +13,25 @@ namespace LCH.Web.Identity.Areas.HelpPage.SampleGeneration
             {
                 throw new ArgumentNullException("errorMessage");
             }
-
-            this.ErrorMessage = errorMessage;
+            ErrorMessage = errorMessage;
         }
 
-        public string ErrorMessage { get; }
+        public string ErrorMessage { get; private set; }
 
         public override bool Equals(object obj)
         {
             InvalidSample other = obj as InvalidSample;
-            return other != null && this.ErrorMessage == other.ErrorMessage;
+            return other != null && ErrorMessage == other.ErrorMessage;
         }
 
         public override int GetHashCode()
         {
-            return this.ErrorMessage.GetHashCode();
+            return ErrorMessage.GetHashCode();
         }
 
         public override string ToString()
         {
-            return this.ErrorMessage;
+            return ErrorMessage;
         }
     }
 }

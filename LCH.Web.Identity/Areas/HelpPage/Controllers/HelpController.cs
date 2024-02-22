@@ -1,9 +1,6 @@
-// Copyright (c) 2024 CG Shared Services, LLC
-// File: LCH.Web.Identity.HelpController.cs
-// ---------------------------------------------------------------------------------------------------
-// Modifications:
-// Date:                                       Name:                                  Description:
-
+using System;
+using System.Web.Http;
+using System.Web.Mvc;
 using LCH.Web.Identity.Areas.HelpPage.ModelDescriptions;
 using LCH.Web.Identity.Areas.HelpPage.Models;
 
@@ -23,44 +20,44 @@ namespace LCH.Web.Identity.Areas.HelpPage.Controllers
 
         public HelpController(HttpConfiguration config)
         {
-            this.Configuration = config;
+            Configuration = config;
         }
 
-        public HttpConfiguration Configuration { get; }
+        public HttpConfiguration Configuration { get; private set; }
 
         public ActionResult Index()
         {
-            this.ViewBag.DocumentationProvider = this.Configuration.Services.GetDocumentationProvider();
-            return this.View(this.Configuration.Services.GetApiExplorer().ApiDescriptions);
+            ViewBag.DocumentationProvider = Configuration.Services.GetDocumentationProvider();
+            return View(Configuration.Services.GetApiExplorer().ApiDescriptions);
         }
 
         public ActionResult Api(string apiId)
         {
-            if (!string.IsNullOrEmpty(apiId))
+            if (!String.IsNullOrEmpty(apiId))
             {
-                HelpPageApiModel apiModel = this.Configuration.GetHelpPageApiModel(apiId);
+                HelpPageApiModel apiModel = Configuration.GetHelpPageApiModel(apiId);
                 if (apiModel != null)
                 {
-                    return this.View(apiModel);
+                    return View(apiModel);
                 }
             }
 
-            return this.View(ErrorViewName);
+            return View(ErrorViewName);
         }
 
         public ActionResult ResourceModel(string modelName)
         {
-            if (!string.IsNullOrEmpty(modelName))
+            if (!String.IsNullOrEmpty(modelName))
             {
-                ModelDescriptionGenerator modelDescriptionGenerator = this.Configuration.GetModelDescriptionGenerator();
+                ModelDescriptionGenerator modelDescriptionGenerator = Configuration.GetModelDescriptionGenerator();
                 ModelDescription modelDescription;
                 if (modelDescriptionGenerator.GeneratedModels.TryGetValue(modelName, out modelDescription))
                 {
-                    return this.View(modelDescription);
+                    return View(modelDescription);
                 }
             }
 
-            return this.View(ErrorViewName);
+            return View(ErrorViewName);
         }
     }
 }

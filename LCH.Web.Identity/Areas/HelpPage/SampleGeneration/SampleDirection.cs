@@ -1,17 +1,11 @@
-// Copyright (c) 2024 CG Shared Services, LLC
-// File: LCH.Web.Identity.SampleDirection.cs
-// ---------------------------------------------------------------------------------------------------
-// Modifications:
-// Date:                                       Name:                                  Description:
-
-namespace LCH.Web.Identity.Areas.HelpPage.SampleGeneration
+namespace LCH.Web.Identity.Areas.HelpPage
 {
     /// <summary>
-    /// Indicates whether the sample is used for request or response.
+    /// Indicates whether the sample is used for request or response
     /// </summary>
     public enum SampleDirection
     {
-        Request = 0
-        , Response
+        Request = 0,
+        Response
     }
 }

@@ -1,9 +1,4 @@
-// Copyright (c) 2024 CG Shared Services, LLC
-// File: LCH.Web.Identity.EnumTypeModelDescription.cs
-// ---------------------------------------------------------------------------------------------------
-// Modifications:
-// Date:                                       Name:                                  Description:
-
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace LCH.Web.Identity.Areas.HelpPage.ModelDescriptions
@@ -12,7 +7,7 @@ namespace LCH.Web.Identity.Areas.HelpPage.ModelDescriptions
     {
         public EnumTypeModelDescription()
         {
-            this.Values = new Collection<EnumValueDescription>();
+            Values = new Collection<EnumValueDescription>();
         }
 
         public Collection<EnumValueDescription> Values { get; private set; }

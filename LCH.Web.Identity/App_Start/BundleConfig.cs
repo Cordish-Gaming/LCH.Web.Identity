@@ -4,6 +4,8 @@
 // Modifications:
 // Date:                                       Name:                                  Description:
 
+using System.Web.Optimization;
+
 namespace LCH.Web.Identity
 {
     public class BundleConfig

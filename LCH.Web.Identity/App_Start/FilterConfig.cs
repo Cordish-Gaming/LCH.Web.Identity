@@ -4,6 +4,8 @@
 // Modifications:
 // Date:                                       Name:                                  Description:
 
+using System.Web.Mvc;
+
 namespace LCH.Web.Identity
 {
     public class FilterConfig

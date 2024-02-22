@@ -4,6 +4,9 @@
 // Modifications:
 // Date:                                       Name:                                  Description:
 
+using System.Web.Mvc;
+using System.Web.Routing;
+
 namespace LCH.Web.Identity
 {
     public class RouteConfig

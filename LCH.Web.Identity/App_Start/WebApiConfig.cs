@@ -4,6 +4,8 @@
 // Modifications:
 // Date:                                       Name:                                  Description:
 
+using System.Web.Http;
+
 namespace LCH.Web.Identity
 {
     public static class WebApiConfig

@@ -1,3 +1,9 @@
+// Copyright (c) 2024 CG Shared Services, LLC
+// File: LCH.Web.Identity.ModelDescription.cs
+// ---------------------------------------------------------------------------------------------------
+// Modifications:
+// Date:                                       Name:                                  Description:
+
 using System;
 
 namespace LCH.Web.Identity.Areas.HelpPage.ModelDescriptions

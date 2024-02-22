@@ -1,3 +1,9 @@
+// Copyright (c) 2024 CG Shared Services, LLC
+// File: LCH.Web.Identity.HelpPageApiModel.cs
+// ---------------------------------------------------------------------------------------------------
+// Modifications:
+// Date:                                       Name:                                  Description:
+
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
@@ -16,10 +22,10 @@ namespace LCH.Web.Identity.Areas.HelpPage.Models
         /// </summary>
         public HelpPageApiModel()
         {
-            UriParameters = new Collection<ParameterDescription>();
-            SampleRequests = new Dictionary<MediaTypeHeaderValue, object>();
-            SampleResponses = new Dictionary<MediaTypeHeaderValue, object>();
-            ErrorMessages = new Collection<string>();
+            this.UriParameters = new Collection<ParameterDescription>();
+            this.SampleRequests = new Dictionary<MediaTypeHeaderValue, object>();
+            this.SampleResponses = new Dictionary<MediaTypeHeaderValue, object>();
+            this.ErrorMessages = new Collection<string>();
         }
 
         /// <summary>
@@ -45,13 +51,8 @@ namespace LCH.Web.Identity.Areas.HelpPage.Models
         /// <summary>
         /// Gets the request body parameter descriptions.
         /// </summary>
-        public IList<ParameterDescription> RequestBodyParameters
-        {
-            get
-            {
-                return GetParameterDescriptions(RequestModelDescription);
-            }
-        }
+        public IList<ParameterDescription> RequestBodyParameters =>
+            GetParameterDescriptions(this.RequestModelDescription);
 
         /// <summary>
         /// Gets or sets the <see cref="ModelDescription"/> that describes the resource.
@@ -61,13 +62,7 @@ namespace LCH.Web.Identity.Areas.HelpPage.Models
         /// <summary>
         /// Gets the resource property descriptions.
         /// </summary>
-        public IList<ParameterDescription> ResourceProperties
-        {
-            get
-            {
-                return GetParameterDescriptions(ResourceDescription);
-            }
-        }
+        public IList<ParameterDescription> ResourceProperties => GetParameterDescriptions(this.ResourceDescription);
 
         /// <summary>
         /// Gets the sample requests associated with the API.
@@ -86,23 +81,19 @@ namespace LCH.Web.Identity.Areas.HelpPage.Models
 
         private static IList<ParameterDescription> GetParameterDescriptions(ModelDescription modelDescription)
         {
-            ComplexTypeModelDescription complexTypeModelDescription = modelDescription as ComplexTypeModelDescription;
-            if (complexTypeModelDescription != null)
+            if (modelDescription is ComplexTypeModelDescription complexTypeModelDescription)
             {
                 return complexTypeModelDescription.Properties;
             }
 
-            CollectionModelDescription collectionModelDescription = modelDescription as CollectionModelDescription;
-            if (collectionModelDescription != null)
+            if (!(modelDescription is CollectionModelDescription collectionModelDescription))
             {
-                complexTypeModelDescription = collectionModelDescription.ElementDescription as ComplexTypeModelDescription;
-                if (complexTypeModelDescription != null)
-                {
-                    return complexTypeModelDescription.Properties;
-                }
+                return null;
             }
 
-            return null;
+            complexTypeModelDescription =
+                collectionModelDescription.ElementDescription as ComplexTypeModelDescription;
+            return complexTypeModelDescription?.Properties;
         }
     }
 }

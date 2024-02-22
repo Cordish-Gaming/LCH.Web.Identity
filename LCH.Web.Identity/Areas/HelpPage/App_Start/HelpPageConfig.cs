@@ -1,22 +1,18 @@
-// Uncomment the following to provide samples for PageResult<T>. Must also add the Microsoft.AspNet.WebApi.OData
-// package to your project.
-////#define Handle_PageResultOfT
+// Copyright (c) 2024 CG Shared Services, LLC
+// File: LCH.Web.Identity.HelpPageConfig.cs
+// ---------------------------------------------------------------------------------------------------
+// Modifications:
+// Date:                                       Name:                                  Description:
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Net.Http.Headers;
-using System.Reflection;
-using System.Web;
 using System.Web.Http;
+using LCH.Web.Identity.Areas.HelpPage.SampleGeneration;
 #if Handle_PageResultOfT
 using System.Web.Http.OData;
 #endif
 
-namespace LCH.Web.Identity.Areas.HelpPage
+namespace LCH.Web.Identity.Areas.HelpPage.App_Start
 {
     /// <summary>
     /// Use this class to customize the Help Page.
@@ -25,12 +21,14 @@ namespace LCH.Web.Identity.Areas.HelpPage
     /// </summary>
     public static class HelpPageConfig
     {
-        [SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters",
-            MessageId = "LCH.Web.Identity.Areas.HelpPage.TextSample.#ctor(System.String)",
-            Justification = "End users may choose to merge this string with existing localized resources.")]
-        [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly",
-            MessageId = "bsonspec",
-            Justification = "Part of a URI.")]
+        [SuppressMessage("Microsoft.Globalization"
+            , "CA1303:Do not pass literals as localized parameters"
+            , MessageId = "LCH.Web.Identity.Areas.HelpPage.TextSample.#ctor(System.String)"
+            , Justification = "End users may choose to merge this string with existing localized resources.")]
+        [SuppressMessage("Microsoft.Naming"
+            , "CA2204:Literals should be spelled correctly"
+            , MessageId = "bsonspec"
+            , Justification = "Part of a URI.")]
         public static void Register(HttpConfiguration config)
         {
             //// Uncomment the following to use the documentation from XML documentation file.
@@ -56,8 +54,8 @@ namespace LCH.Web.Identity.Areas.HelpPage
             // type, regardless of the body parameter or return type. The lines below avoid display of binary content.
             // The BsonMediaTypeFormatter (if available) is not used to serialize the TextSample object.
             config.SetSampleForMediaType(
-                new TextSample("Binary JSON content. See http://bsonspec.org for details."),
-                new MediaTypeHeaderValue("application/bson"));
+                new TextSample("Binary JSON content. See http://bsonspec.org for details.")
+                , new MediaTypeHeaderValue("application/bson"));
 
             //// Uncomment the following to use "[0]=foo&[1]=bar" directly as the sample for all actions that support form URL encoded format
             //// and have IEnumerable<string> as the body parameter or return type.

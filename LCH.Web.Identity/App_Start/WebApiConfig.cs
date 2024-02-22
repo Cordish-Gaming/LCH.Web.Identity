@@ -18,9 +18,9 @@ namespace LCH.Web.Identity
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
-                name: "DefaultApi"
-                , routeTemplate: "api/{controller}/{id}"
-                , defaults: new
+                "DefaultApi"
+                , "api/{controller}/{id}"
+                , new
                 {
                     id = RouteParameter.Optional
                 });

@@ -1,6 +1,12 @@
+// Copyright (c) 2024 CG Shared Services, LLC
+// File: LCH.Web.Identity.TextSample.cs
+// ---------------------------------------------------------------------------------------------------
+// Modifications:
+// Date:                                       Name:                                  Description:
+
 using System;
 
-namespace LCH.Web.Identity.Areas.HelpPage
+namespace LCH.Web.Identity.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
@@ -13,25 +19,26 @@ namespace LCH.Web.Identity.Areas.HelpPage
             {
                 throw new ArgumentNullException("text");
             }
-            Text = text;
+
+            this.Text = text;
         }
 
-        public string Text { get; private set; }
+        public string Text { get; }
 
         public override bool Equals(object obj)
         {
             TextSample other = obj as TextSample;
-            return other != null && Text == other.Text;
+            return other != null && this.Text == other.Text;
         }
 
         public override int GetHashCode()
         {
-            return Text.GetHashCode();
+            return this.Text.GetHashCode();
         }
 
         public override string ToString()
         {
-            return Text;
+            return this.Text;
         }
     }
 }

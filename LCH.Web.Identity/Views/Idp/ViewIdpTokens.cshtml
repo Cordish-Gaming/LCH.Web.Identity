@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div onload="AlertName();" class="row">
+    <div class="col-md-4">
+        <h2>Id Token</h2>
+        <p style="word-wrap: break-word" id="id_token"></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Code</h2>
+        <p style="word-wrap: break-word" id="code"></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Access Token</h2>
+        <p style="word-wrap: break-word" id="access_token"></p>
+    </div>
+</div>
+
+@section scripts {
+
+    <script type="text/javascript">
+
+        var accessToken = "access_token";
+        var code = "code";
+        var idToken = "id_token";
+
+        $(document).ready(function () {
+
+            if (window.location.hash) {
+                var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+                ProcessHash(hash);
+            }
+        })
+
+        function ProcessHash(hash) {
+            var splitHash = hash.split("&");
+
+            splitHash.forEach(function (element) {
+
+                var token = element.split("=");
+
+                AddHash(token[0], token[1]);
+
+            })
+        }
+
+        function AddHash(elementId, hash) {
+            document.getElementById(elementId).innerHTML = hash;
+        }
+
+    </script>
+
+}
